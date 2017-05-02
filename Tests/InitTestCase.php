@@ -44,7 +44,7 @@ abstract class InitTestCase extends \PHPUnit_Framework_TestCase
 
     protected static function getCapabilities() {
         self::$capabilities=  new \DesiredCapabilities();
-        self::$capabilities->setCapability("app", "C:\Users\Rafał\PhpstormProjects\BFCMobileTests\bfc.apk");
+      //  self::$capabilities->setCapability("app", "..\\bfc.apk");
         self::$capabilities->setCapability("platformName", "Android");
         self::$capabilities->setCapability("platformVersion", "5.0.1");
         self::$capabilities->setCapability( "browserName", "");
