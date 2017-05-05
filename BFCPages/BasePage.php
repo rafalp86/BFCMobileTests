@@ -2,7 +2,7 @@
 
 namespace BFCMobileTests\BFCPages;
 
-use Facebook\WebDriver;
+//use Facebook\WebDriver;
 require_once '.\vendor\autoload.php';
 
 class BasePage

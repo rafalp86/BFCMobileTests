@@ -8,7 +8,7 @@
 namespace BFCMobileTests\Tests;
 include('InitTestCase.php'); //dlaczego
 include('BFCPages\MenuPage.php'); //dlaczego
-
+use BFCMobileTests\BFCPages\MenuPage;
 
 class MenuItemsVisibilityTest extends InitTestCase
 {

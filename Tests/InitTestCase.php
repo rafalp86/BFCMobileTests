@@ -13,7 +13,8 @@ use PHPUnit_Framework_TestCase;
 //require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
 //require_once('PHPUnit/Extensions/AppiumTestCase.php');
 //require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
-require_once '.\vendor\autoload.php';
+require_once ('vendor\autoload.php');
+
 abstract class InitTestCase extends \PHPUnit_Framework_TestCase
     //\PHPUnit_Extensions_AppiumTestCase
   //
