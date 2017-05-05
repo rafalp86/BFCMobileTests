@@ -7,36 +7,36 @@
  */
 
 namespace BFCMobileTests\BFCPages;
-
+include('BasePage.php'); //dlaczego ??
 
 class MenuPage extends BasePage
 {
     private static $_selectors = [
         "work_order_el" =>
             [
-                "xpath" => "\\*[@contetnt-desc='? Work Order')]"
+                "xpath" => "//*[contains(@content-desc,'Work Order')]"
             ],
         "time_sheet_el" =>
             [
-                "xpath" => "\\*[@contetnt-desc='? Time sheet')]"
+                "xpath" => "//*[@content-desc='Time sheet')]"
             ]
     ];
 
     function IsWorkOrderItemDisplayed() {
-    return $this->find(self::$_selectors["work_order_el"])->isDisplayed();
-    }
-    function IsTimeShhetItemDisplayed() {
         return $this->find(self::$_selectors["work_order_el"])->isDisplayed();
     }
-/*
-    protected function getWorkOrderBy() {
-        return $this->driver->WebDriverBy(\WebDriverBy::xpath("\\*[@contetnt-desc='? Work Order')]"));
+    function IsTimeSheetItemDisplayed() {
+        return $this->find(self::$_selectors["work_order_el"])->isDisplayed();
     }
+    /*
+        protected function getWorkOrderBy() {
+            return $this->driver->WebDriverBy(\WebDriverBy::xpath("\\*[@contetnt-desc='? Work Order')]"));
+        }
 
-    protected function getTimeSheetBy() {
-        return $this->driver->WebDriverBy(\WebDriverBy::xpath("\\*[@contetnt-desc='? Time sheet')]"));
+        protected function getTimeSheetBy() {
+            return $this->driver->WebDriverBy(\WebDriverBy::xpath("\\*[@contetnt-desc='? Time sheet')]"));
 
-    }
-*/
+        }
+    */
 
 }

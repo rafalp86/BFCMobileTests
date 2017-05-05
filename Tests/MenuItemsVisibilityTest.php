@@ -6,22 +6,21 @@
  * Time: 06:04
  */
 namespace BFCMobileTests\Tests;
-require_once 'vendor/autoload.php';
 include('InitTestCase.php'); //dlaczego
-include('MenuPage.php'); //dlaczego
+include('BFCPages\MenuPage.php'); //dlaczego
+use BFCMobileTests\BFCPages\MenuPage;
 
 class MenuItemsVisibilityTest extends InitTestCase
 {
-    public function testCheckWorkOrderVisibility()
+    public function testCheckWorkOrderItemVisibility()
     {
         $menuView = new MenuPage(parent::$static_driver );
         $this->assertTrue($menuView ->IsWorkOrderItemDisplayed());
     }
 
-    public function CheckWorkOrderVisibility2()
+    public function testCheckTimeSheetItemVisibility()
     {
-        $menuView = new MenuPage(parent::$driver );
-        echo 'CheckWorkOrderVisibility';
-        $this->assertTrue($menuView ->IsWorkOrderItemDisplayed());
+        $menuView = new MenuPage(parent::$static_driver );
+        $this->assertTrue($menuView ->IsTimeSheetItemDisplayed());
     }
 }

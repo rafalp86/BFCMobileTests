@@ -2,6 +2,8 @@
 
 namespace BFCMobileTests\BFCPages;
 
+use Facebook\WebDriver;
+require_once '.\vendor\autoload.php';
 
 class BasePage
 {
@@ -17,13 +19,13 @@ class BasePage
     {
         switch (true) {
             case isset($selector["css"]):
-                return $this->driver->findElement(WebDriverBy::cssSelector($selector["css"]));
+                return $this->driver->findElement(\WebDriverBy::cssSelector($selector["css"]));
                 break;
             case isset($selector["xpath"]):
-                return $this->driver->findElement(WebDriverBy::xpath($selector["xpath"]));
+                return $this->driver->findElement(\WebDriverBy::xpath($selector["xpath"]));
                 break;
             default:
-                return $this->driver->findElement(WebDriverBy::id($selector));
+                return $this->driver->findElement(\WebDriverBy::id($selector));
         }
     }
 

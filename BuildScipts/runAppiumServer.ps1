@@ -1,10 +1,10 @@
 
 #przekazaæ jako parametry
 $apkFile='..\bfc.apk'
-$lofFile="C:\AppiumLog.txt"
+$lofFile="E:\Android\AppiumLog.txt"
 $EmulatorName='crm'
 $deviceName="05a897ce0fa2f571"
-$runInDevice=$False
+$runInDevice=$True
 $resetEmulator=$False
 
 if($args[0] -ne $null) { $EmulatorName=$args[0] ; $EmulatorName }
@@ -29,6 +29,8 @@ Write-Host $AppiumProcessCount , $SeleniumProcessCount
 
     "Run Appium server"
     "Appium dir:"+$Env:APPIUM
+     $apkFile= (Resolve-Path $apkFile )
+    "Appium apk: " + $apkFile
      $EnDevComand="--avd "+$EmulatorName
 
      if($runInDevice) {$EnDevComand="--device-name "+$deviceName }

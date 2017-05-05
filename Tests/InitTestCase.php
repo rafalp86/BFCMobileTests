@@ -11,8 +11,9 @@ use PHPUnit_Framework_TestCase;
 
 //require_once('PHPUnit/Extensions/AppiumTestCase.php');
 //require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
-require_once('PHPUnit/Extensions/AppiumTestCase.php');
-require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
+//require_once('PHPUnit/Extensions/AppiumTestCase.php');
+//require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
+require_once '.\vendor\autoload.php';
 abstract class InitTestCase extends \PHPUnit_Framework_TestCase
   //  \PHPUnit_Extensions_AppiumTestCase
 {
@@ -28,7 +29,7 @@ abstract class InitTestCase extends \PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass() {
          echo 'Inicjalizacja \n';
-            self::$static_driver = \RemoteWebDriver::create(static::getAppiummHost(), static::getCapabilities());
+            self::$static_driver = \RemoteWebDriver::create(static::getAppiummHost(), static::getCapabilities(),60000,60000);
 
     }
 
@@ -44,7 +45,7 @@ abstract class InitTestCase extends \PHPUnit_Framework_TestCase
 
     protected static function getCapabilities() {
         self::$capabilities=  new \DesiredCapabilities();
-      //  self::$capabilities->setCapability("app", "..\\bfc.apk");
+        self::$capabilities->setCapability("app", "C:\Users\Rafał\PhpstormProjects\BFCMobileTests\bfc.apk");
         self::$capabilities->setCapability("platformName", "Android");
         self::$capabilities->setCapability("platformVersion", "5.0.1");
         self::$capabilities->setCapability( "browserName", "");
