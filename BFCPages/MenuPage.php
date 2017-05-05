@@ -28,6 +28,7 @@ class MenuPage extends BasePage
     function IsTimeSheetItemDisplayed() {
         return $this->find(self::$_selectors["work_order_el"])->isDisplayed();
     }
+
     /*
         protected function getWorkOrderBy() {
             return $this->driver->WebDriverBy(\WebDriverBy::xpath("\\*[@contetnt-desc='? Work Order')]"));
