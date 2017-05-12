@@ -1,9 +1,6 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Rafał
- * Date: 02.05.2017
- * Time: 06:04
  */
 namespace BFCMobileTests\Tests;
 include('InitTestCase.php'); //dlaczego

@@ -7,13 +7,14 @@
  * Time: 14:06
  */
 namespace BFCMobileTests\Tests;
-use PHPUnit_Framework_TestCase;
 
-//require_once('PHPUnit/Extensions/AppiumTestCase.php');
-//require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
-//require_once('PHPUnit/Extensions/AppiumTestCase.php');
-//require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
+use PHPUnit_Framework_TestCase;
 require_once ('vendor\autoload.php');
+//require_once('PHPUnit/Extensions/AppiumTestCase.php');
+//require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
+//require_once('PHPUnit/Extensions/AppiumTestCase.php');
+//require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
+
 
 abstract class InitTestCase extends \PHPUnit_Framework_TestCase
     //\PHPUnit_Extensions_AppiumTestCase
@@ -31,7 +32,6 @@ abstract class InitTestCase extends \PHPUnit_Framework_TestCase
 
 
     public static function setUpBeforeClass() {
-         echo 'Inicjalizacja \n';
 
             self::$static_driver = \RemoteWebDriver::create(static::getAppiummHost(), static::getCapabilities(),60000,60000);
 
