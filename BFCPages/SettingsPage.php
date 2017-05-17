@@ -8,6 +8,7 @@
 
 namespace BFCMobileTests\BFCPages;
 
+use BFCMobileTests\BFCPages\SychPopupMessagePage;
 
 class SettingsPage  extends BasePage
 {
@@ -20,6 +21,25 @@ class SettingsPage  extends BasePage
 
     function SychData()
     {
-        return $this->find(self::$_selectors["sync_button_el"])->click();
+        $allButtons=$this->driver->findElements($this->getButtonsBy());
+        end($allButtons)->click();
+        /*
+        foreach ($allButtons as $button )
+        {
+            $name=$button->getAttribute('name');
+            $this->writeToConsole('-'.$name.'-');
+        }
+        $this->tap($this->getSynchButtonBy());
+        */
+        return new SychPopupMessagePage($this->driver);
+    }
+    //PAGE ELEMENTS
+    private function getButtonsBy() {
+        return \WebDriverBy::xpath("//android.widget.Button");
+
+    }
+    private function getSynchButtonBy() {
+        return \WebDriverBy::xpath("//android.widget.Button[@name=' ']");
+
     }
 }

@@ -21,12 +21,10 @@ class TestSyncStatus extends  InitTestCase
     {
         $menuView = new MenuPage(parent::$static_driver );
         $popUpView= new SychPopupMessagePage(parent::$static_driver);
-        $popUpView->waitForSynchFinish();
-        //$menuView->GoToSettings();
-        //$settingsView= new SettingsPage((parent::$static_driver));
+        $popUpView->waitForSynchFinishSetUpApp();
         $settingsView=$menuView->GoToSettings();
-        $settingsView->SychData();
-        $this->assertTrue(true);
+        $synchView=$settingsView->SychData();
+        $this->assertTrue($synchView->waitForSynchFinish());
     }
 
 }

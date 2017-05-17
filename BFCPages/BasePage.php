@@ -10,10 +10,10 @@ require_once '.\vendor\autoload.php';
 class BasePage
 {
     protected $driver;
-    protected $timeOut=60;
+    protected $globalTimeOut=60;
     public function __construct(\RemoteWebDriver $driver) {
         $this->driver = $driver;
-        $this->driver->manage()->timeouts()->implicitlyWait( $this->timeOut);
+        $this->driver->manage()->timeouts()->implicitlyWait( $this->globalTimeOut);
 
     }
 
@@ -39,6 +39,7 @@ class BasePage
 
     protected  function findElement($ByElemet)
     {
+        $this->writeToConsole('Try find :'.$ByElemet->getValue());
         return $this->driver->findElement($ByElemet);
     }
 
@@ -51,6 +52,7 @@ class BasePage
             }
         });
     }
+
     //do poprwaki , zmienić na metode  wait()->until(function()
     protected function waitForElementDisappearOLD($ByElement,$timeout=60) {
         $this->driver->manage()->timeouts()->implicitlyWait(2);
@@ -62,26 +64,48 @@ class BasePage
             sleep(1);
             $timeCount++;
         }
-        $this->driver->manage()->timeouts()->implicitlyWait($this->timeOut);
+        $this->driver->manage()->timeouts()->implicitlyWait($this->globalTimeOut);
     }
     protected function waitForElementDisappear($ByElement,$timeout=60) {
-        $this->driver->wait($timeout, 200)->until(
-            \WebDriverExpectedCondition::invisibilityOfElementLocated($ByElement));
-    }
-
-    protected function isDisplayed($ByElement,$timeout=20) {
+        $this->writeToConsole('wait For Disappear :'.$ByElement->getValue());
+        $this->driver->manage()->timeouts()->implicitlyWait(1);
         try {
             $this->writeToConsole($timeout);
             $this->driver->wait($timeout, 200)->until(
-                \WebDriverExpectedCondition::visibilityOfElementLocated($ByElement));
-            return true;
-        } catch (\StaleElementReferenceException $e) {// zmienić StaleElementReferenceException
+                \WebDriverExpectedCondition::invisibilityOfElementLocated($ByElement));
+        } catch (\Exception $e) {// zmienić StaleElementReferenceException
             return false;
         }
+        finally
+        {
+            $this->driver->manage()->timeouts()->implicitlyWait($this->globalTimeOut);
+        }
+    }
+
+
+    protected function isDisplayed($ByElement,$timeout=20) {
+        $this->writeToConsole('isDisplayed :'.$ByElement->getValue());
+        $this->driver->manage()->timeouts()->implicitlyWait(1);
+        try {
+            $this->driver->wait($timeout, 200)->until(
+                \WebDriverExpectedCondition::visibilityOfElementLocated($ByElement));
+            return true;
+        } catch (\Exception $e) {// zmienić StaleElementReferenceException
+
+            return false;
+        }
+        finally
+        {
+            $this->driver->manage()->timeouts()->implicitlyWait($this->globalTimeOut);
+        }
+
     }
 
     public function tap($ByElement)
     {
-        $this->driver->findElement($ByElement)->Click();
+        $this->writeToConsole('Tap :'.$ByElement->getValue());
+        $el=$this->driver->findElement($ByElement);
+        //$this->writeToConsole('-'.$el->getAttribute('name').'-');
+         $el->Click();
     }
 }

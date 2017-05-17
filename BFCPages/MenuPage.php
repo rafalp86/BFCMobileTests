@@ -35,15 +35,15 @@ class MenuPage extends BasePage
 
     //PAGE ELEMENTS
         private function getWorkOrderBy() {
-            return \WebDriverBy::xpath("//*[contains(@content-desc,'Work Order')]");
+            return \WebDriverBy::xpath("//*[@content-desc=' Work Order']");
         }
 
         protected function getTimeSheetBy() {
-            return \WebDriverBy::xpath("//*[@content-desc='Time sheet')]");
+            return \WebDriverBy::xpath("//*[@content-desc=' Time sheet']");
 
         }
     protected function getSettingsBy() {
-        return \WebDriverBy::xpath("//*[contains(@content-desc,'Settings')]");
+        return \WebDriverBy::xpath("//*[@content-desc=' Settings']");
 
     }
 
