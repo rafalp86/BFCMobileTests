@@ -12,13 +12,6 @@ use BFCMobileTests\BFCPages\SychPopupMessagePage;
 
 class SettingsPage  extends BasePage
 {
-    private static $_selectors = [
-        "sync_button_el" =>
-            [
-                "xpath" => "//android.widget.Button[text()='']"
-            ]
-    ];
-
     function SychData()
     {
         $allButtons=$this->driver->findElements($this->getButtonsBy());
@@ -33,10 +26,21 @@ class SettingsPage  extends BasePage
         */
         return new SychPopupMessagePage($this->driver);
     }
+
+    function GoToSyncStatus()
+    {
+        $this->tap($this->getSynchStatusMenuItemBy());
+        return new SynchStatusPage($this->driver);
+    }
+
     //PAGE ELEMENTS
     private function getButtonsBy() {
         return \WebDriverBy::xpath("//android.widget.Button");
 
+    }
+    private function getSynchStatusMenuItemBy()
+    {
+        return \WebDriverBy::xpath("//android.view.View[@content-desc='Sync status']");
     }
     private function getSynchButtonBy() {
         return \WebDriverBy::xpath("//android.widget.Button[@name=' ']");

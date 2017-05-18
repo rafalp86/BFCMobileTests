@@ -18,13 +18,19 @@ class MenuPage extends BasePage
          return  new SettingsPage($this->driver);
 
      }
+     function GoToWorkOrder()
+     {
+         $this->tap($this->getWorkOrderBy());
+         return new WorkOrderPage($this->driver);
+     }
 
     function IsWorkOrderItemDisplayed() {
-        return $this->isDisplayed($this->getWorkOrderBy());
+
+        return $this->isDisplayed($this->getWorkOrderBy(),3);
     }
 
     function IsTimeSheetItemDisplayed() {
-        return $this->isDisplayed($this->getSettingsBy());
+        return $this->isDisplayed($this->getTimeSheetBy(),3);
     }
 
     function WaitForSynFinish()
@@ -35,31 +41,15 @@ class MenuPage extends BasePage
 
     //PAGE ELEMENTS
         private function getWorkOrderBy() {
-            return \WebDriverBy::xpath("//*[@content-desc=' Work Order']");
+            return \WebDriverBy::xpath("//*[@content-desc=' Work Order']");
         }
 
         protected function getTimeSheetBy() {
-            return \WebDriverBy::xpath("//*[@content-desc=' Time sheet']");
+            return \WebDriverBy::xpath("//*[@content-desc=' Time sheet']");
 
         }
-    protected function getSettingsBy() {
-        return \WebDriverBy::xpath("//*[@content-desc=' Settings']");
+        protected function getSettingsBy() {
+            return \WebDriverBy::xpath("//*[@content-desc=' Settings']");
 
-    }
-
-    private static $_selectors = [
-        "work_order_el" =>
-            [
-                "xpath" => "//*[contains(@content-desc,'Work Order')]"
-            ],
-        "time_sheet_el" =>
-            [
-                "xpath" => "//*[@content-desc='Time sheet')]"
-            ],
-        "settings_el" =>
-            [
-                "xpath" => "//*[contains(@content-desc,'Settings')]"
-            ]
-    ];
-
+        }
 }

@@ -34,7 +34,6 @@ abstract class InitTestCase extends \PHPUnit_Framework_TestCase
     public static function setUpBeforeClass() {
 
             self::$static_driver = \RemoteWebDriver::create(static::getAppiummHost(), static::getCapabilities(),60000,60000);
-
     }
 
     public static function tearDownAfterClass() {
@@ -63,6 +62,7 @@ abstract class InitTestCase extends \PHPUnit_Framework_TestCase
     }
     protected function setUp() {
         $this->driver = self::$static_driver;
+        fwrite(STDERR, print_r( '-->'.$this->getName().PHP_EOL, TRUE));
         if(!is_dir(self::$screenshotDir)){ mkdir(self::$screenshotDir, 0700,true);}
 
     }
@@ -74,8 +74,4 @@ abstract class InitTestCase extends \PHPUnit_Framework_TestCase
         }
     }
 
-    protected function waitForUserInput() {
-        if(trim(fgets(fopen("php://stdin","r"))) != chr(13))
-            return;
-    }
 }

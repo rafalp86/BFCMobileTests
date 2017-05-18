@@ -15,7 +15,7 @@ use BFCMobileTests\BFCPages\MenuPage;
 use BFCMobileTests\BFCPages\SettingsPage;
 use BFCMobileTests\BFCPages\SychPopupMessagePage;
 
-class TestSyncStatus extends  InitTestCase
+class SyncStatusTest extends  InitTestCase
 {
     public function testSyncStatusInSettingsView()
     {

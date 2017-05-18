@@ -70,7 +70,6 @@ class BasePage
         $this->writeToConsole('wait For Disappear :'.$ByElement->getValue());
         $this->driver->manage()->timeouts()->implicitlyWait(1);
         try {
-            $this->writeToConsole($timeout);
             $this->driver->wait($timeout, 200)->until(
                 \WebDriverExpectedCondition::invisibilityOfElementLocated($ByElement));
         } catch (\Exception $e) {// zmienić StaleElementReferenceException
@@ -90,8 +89,7 @@ class BasePage
             $this->driver->wait($timeout, 200)->until(
                 \WebDriverExpectedCondition::visibilityOfElementLocated($ByElement));
             return true;
-        } catch (\Exception $e) {// zmienić StaleElementReferenceException
-
+        } catch (\Exception $e) {
             return false;
         }
         finally
@@ -107,5 +105,15 @@ class BasePage
         $el=$this->driver->findElement($ByElement);
         //$this->writeToConsole('-'.$el->getAttribute('name').'-');
          $el->Click();
+    }
+
+    public  function getTextFromAllElemets() // przydatny w przypadku problemów z kodowaniem
+    {
+        $allElements= $this->driver->findElements(\WebDriverBy::xpath("//*"));
+        foreach($allElements as $el)
+        {
+            $this->writeToConsole($el->getTagName().'-'.$el->getAttribute('name').'-');
+        }
+
     }
 }
