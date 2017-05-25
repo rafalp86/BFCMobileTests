@@ -82,7 +82,7 @@ class BasePage
     }
 
 
-    protected function isDisplayed($ByElement,$timeout=20) {
+    protected function isDisplayed($ByElement,$timeout=2) {
         $this->writeToConsole('isDisplayed :'.$ByElement->getValue());
         $this->driver->manage()->timeouts()->implicitlyWait(1);
         try {
@@ -114,6 +114,11 @@ class BasePage
         {
             $this->writeToConsole($el->getTagName().'-'.$el->getAttribute('name').'-');
         }
+
+    }
+
+    public  function Back()
+    {
 
     }
 }
