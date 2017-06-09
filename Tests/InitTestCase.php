@@ -10,22 +10,13 @@ namespace BFCMobileTests\Tests;
 
 use PHPUnit_Framework_TestCase;
 require_once ('vendor\autoload.php');
-//require_once('PHPUnit/Extensions/AppiumTestCase.php');
-//require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
-//require_once('PHPUnit/Extensions/AppiumTestCase.php');
-//require_once('PHPUnit/Extensions/AppiumTestCase/Element.php');
-
 
 abstract class InitTestCase extends \PHPUnit_Framework_TestCase
     //\PHPUnit_Extensions_AppiumTestCase
-  //
-
 {
     /**
      * @var \RemoteWebDriver
      */
-    public  $driver;
-
     public static $static_driver;
     private static $capabilities;
     private static $screenshotDir="Screenshot";

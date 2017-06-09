@@ -7,9 +7,9 @@
  */
 
 namespace BFCMobileTests\Tests;
-include('InitTestCase.php'); //dlaczego
-include('BFCPages\MenuPage.php'); //dlaczego
-include('BFCPages\SychPopupMessagePage.php');
+//include('InitTestCase.php'); //dlaczego
+//include('BFCPages\MenuPage.php'); //dlaczego
+//include('BFCPages\SychPopupMessagePage.php');
 
 use BFCMobileTests\BFCPages\MenuPage;
 use BFCMobileTests\BFCPages\SettingsPage;
