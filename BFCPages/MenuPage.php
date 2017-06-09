@@ -9,6 +9,7 @@
 namespace BFCMobileTests\BFCPages;
 include('BasePage.php'); //dlaczego ??
 include('SettingsPage.php'); //??
+include('Action\Gestures.php'); //??
 
 class MenuPage extends BasePage
 {

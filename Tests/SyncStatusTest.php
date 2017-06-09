@@ -18,20 +18,29 @@ use BFCMobileTests\BFCPages\SychPopupMessagePage;
 class SyncStatusTest extends  InitTestCase
 {
 
-    public function testSyncStatusInSettingsView()
+    public function AtestSyncStatusInSettingsView()
     {
         $menuView = new MenuPage(parent::$static_driver );
         $popUpView= new SychPopupMessagePage(parent::$static_driver);
+       
         $popUpView->waitForSynchFinishSetUpApp();
         $settingsView=$menuView->GoToSettings();
+        
         $synchView=$settingsView->SychData();
         $this->assertTrue($synchView->waitForSynchFinish());
+
     }
     public function testSychAndStatusVeryfication()
     {
-        $menuView = new MenuPage(parent::$static_driver );
+        $menuView = new MenuPage(parent::$static_driver );     
+        $popUpView= new SychPopupMessagePage(parent::$static_driver);
+        $popUpView->waitForSynchFinishSetUpApp();
         $synchStatusView=$menuView->GoToSettings()->GoToSyncStatus();
+        $time=$synchStatusView->GetAssetsTime();
+        $synchStatusView->writeToConsole($time);
 
     }
+    
+  
 
 }

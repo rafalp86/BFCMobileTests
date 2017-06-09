@@ -2,8 +2,6 @@
 
 namespace BFCMobileTests\BFCPages;
 
-//use Facebook\WebDriver;
-use SebastianBergmann\CodeCoverage\Report\PHP;
 
 require_once '.\vendor\autoload.php';
 
@@ -14,7 +12,11 @@ class BasePage
     public function __construct(\RemoteWebDriver $driver) {
         $this->driver = $driver;
         $this->driver->manage()->timeouts()->implicitlyWait( $this->globalTimeOut);
-
+    }
+    
+    public function getDriver()
+    {
+        return $this->driver;
     }
 
     protected function find($selector)
@@ -102,9 +104,13 @@ class BasePage
     public function tap($ByElement)
     {
         $this->writeToConsole('Tap :'.$ByElement->getValue());
-        $el=$this->driver->findElement($ByElement);
+        $el=$this->findElement($ByElement);
         //$this->writeToConsole('-'.$el->getAttribute('name').'-');
          $el->Click();
+    }
+    
+    protected function getText($ByElement){
+         return $this->findElement($ByElement)->getText();
     }
 
     public  function getTextFromAllElemets() // przydatny w przypadku problemów z kodowaniem

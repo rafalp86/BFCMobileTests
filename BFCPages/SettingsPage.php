@@ -7,8 +7,10 @@
  */
 
 namespace BFCMobileTests\BFCPages;
+include('BFCPages\SynchStatusPage.php'); //?????
 
 use BFCMobileTests\BFCPages\SychPopupMessagePage;
+use BFCMobileTests\BFCPages\SynchStatusPage;
 
 class SettingsPage  extends BasePage
 {
@@ -16,14 +18,6 @@ class SettingsPage  extends BasePage
     {
         $allButtons=$this->driver->findElements($this->getButtonsBy());
         end($allButtons)->click();
-        /*
-        foreach ($allButtons as $button )
-        {
-            $name=$button->getAttribute('name');
-            $this->writeToConsole('-'.$name.'-');
-        }
-        $this->tap($this->getSynchButtonBy());
-        */
         return new SychPopupMessagePage($this->driver);
     }
 
