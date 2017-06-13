@@ -7,6 +7,7 @@
  */
 
 namespace BFCMobileTests\Tests;
+
 //include('InitTestCase.php'); //dlaczego
 //include('BFCPages\MenuPage.php'); //dlaczego
 //include('BFCPages\SychPopupMessagePage.php');
@@ -14,11 +15,12 @@ namespace BFCMobileTests\Tests;
 use BFCMobileTests\BFCPages\MenuPage;
 use BFCMobileTests\BFCPages\SettingsPage;
 use BFCMobileTests\BFCPages\SychPopupMessagePage;
+use BFCMobileTests\Tests\InitTestCase;
 
-class SyncStatusTest extends  InitTestCase
+class SyncStatusTest extends InitTestCase
 {
 
-    public function AtestSyncStatusInSettingsView()
+    public function testSyncStatusInSettingsView()
     {
         $menuView = new MenuPage(parent::$static_driver );
         $popUpView= new SychPopupMessagePage(parent::$static_driver);
